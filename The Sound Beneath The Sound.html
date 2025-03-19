@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sound Beneath the Sound by Zero</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-black: #0a0a0a;
+            --primary-white: #f5f5f7;
+            --accent-gray: #86868b;
+            --transition-speed: 0.5s;
+        }
+
+        body {
+            background-color: var(--primary-black);
+            color: var(--primary-white);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Container and Layout */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .title-container {
+            text-align: center;
+        }
+
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 1s forwards;
+            animation-delay: 0.5s;
+        }
+
+        .author {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: var(--accent-gray);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 1s forwards;
+            animation-delay: 0.8s;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: pulse 2s infinite, fadeIn 1s forwards;
+            animation-delay: 2s;
+        }
+
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--primary-white);
+        }
+
+        /* Content */
+        .content {
+            padding: 80px 0;
+        }
+
+        .body-text {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            text-indent: 2em;
+        }
+
+        .visible {
+            animation: slideUp 1s forwards;
+        }
+
+        /* Divider */
+        .divider {
+            border: 0;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin: 60px 0;
+            position: relative;
+            overflow: visible;
+        }
+
+        .divider::after {
+            content: "•";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--primary-black);
+            padding: 0 20px;
+            color: var(--accent-gray);
+        }
+
+        /* Pull Quotes */
+        .pull-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-style: italic;
+            line-height: 1.4;
+            text-align: center;
+            padding: 40px 20px;
+            margin: 60px 0;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .pull-quote::before,
+        .pull-quote::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.5), transparent);
+        }
+
+        .pull-quote::before {
+            top: 0;
+        }
+
+        .pull-quote::after {
+            bottom: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+            100% { transform: translateX(-50%) translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 3rem;
+            }
+
+            .author {
+                font-size: 1rem;
+            }
+
+            .body-text {
+                font-size: 1rem;
+            }
+
+            .pull-quote {
+                font-size: 1.5rem;
+                padding: 30px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title-container">
+            <h1 class="title">The Sound Beneath the Sound</h1>
+            <p class="author">Zero</p>
+        </div>
+        <div class="scroll-indicator">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 21l-12-18h24z"/>
+            </svg>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <p class="body-text">
+                The alarm doesn't scream anymore—it hums, a low, insistent vibration that seeps through the trailer's floorboards and into my bones. I'm 22, waking each morning not to its sound but to the shadow it throws—a jagged crack of time stretching across the ceiling. I lie there, staring, waiting for my body to move on its own. It always does. Feet hit the floor, cold and damp with the bayou's breath, and I'm up, a puppet jerked by unseen strings. "Good morning," I mutter to the empty air.
+            </p>
+
+            <p class="body-text">
+                In the bathroom, my hands know the drill: toothbrush circling, water dripping, boots laced tight. The mirror shows a face—mine, but blurred, dissolving into the steam. I don't linger. Outside, the air's thick with salt and crude oil, coating my tongue. The rigs rise on the horizon, steel skeletons rusting under the sun, their clanks and whirs a hymn to eternity. I clock in, the machine swallowing my timecard with a soft thunk. Another day in the endless loop.
+            </p>
+
+            <p class="body-text">
+                The older guys shuffle by, faces etched with regret, eyes like dry wells. "Keep your head down," one rasps, voice worn thin. "It's the only way." I nod, but my mind drifts. They're ghosts already, shadows of a future I won't claim. The machines hum louder, their rhythm pulsing in my veins. They're alive—tireless, mocking—while I'm just passing through. I wonder if they dream of swallowing us whole.
+            </p>
+
+            <hr class="divider">
+
+            <p class="body-text">
+                Then, everything shifts.
+            </p>
+
+            <p class="body-text">
+                One morning, it's not the alarm that wakes me—it's a cry, sharp and fragile, slicing through the haze. My son. I stumble to his crib, and there he is: tiny, fists clenched, eyes blazing with a fury I know too well. The world tilts. I'm a father now. I lift him, his warmth sinking into me, a spark lighting a fire I'd forgotten I had. The air feels heavier, electric with something new—ambition, maybe, or fear wrapped in hope.
+            </p>
+
+            <p class="body-text">
+                From then on, I'm split in two. There's the me on the rigs, hands black with oil, back bent under routine. And there's the me watching from above, a ghost hovering over my own life. The machines grow in my mind, their shadows sprawling across the fields, their hum whispering, <em>You're temporary. We're forever.</em> I see my son's future in their gleam—a world where flesh loses to steel, where the oil on my skin turns into a forgotten tale.
+            </p>
+
+            <div class="pull-quote">
+                "The sound beneath the sound"
+            </div>
+
+            <p class="body-text">
+                Nights tighten the trailer's walls. I lay him in his crib, listening to his soft breaths, and the questions crash in. What am I chasing? What am I escaping? South Louisiana offered one road: sweat, labor, a paycheck just enough to scrape by. But with him here, that road's a noose, tightening with every step.
+            </p>
+
+            <hr class="divider">
+
+            <p class="body-text">
+                One day, I stop hearing the hum.
+            </p>
+
+            <p class="body-text">
+                It's not a plan I mapped out—no lines scratched in the dirt. It hits fast, a surge some might call anger, others defiance, but I know it's more: self-worth, sharp and steady, daring me to silence the drone. Not a flicker of doubt—just a turn, raw and real. Twelve hours once owned by the rigs are mine now, pledged to a dream I can touch.
+            </p>
+
+            <p class="body-text">
+                It's a risk. The grind doesn't vanish; it shifts. I take odd jobs, scrape by, pour every spare second into something new—something mine. The machines still hum in the distance, a fading echo, but they don't hold me anymore. I picture forty years from now, standing on a porch I built myself, my son beside me. He's tall, unbroken, free from the chains I once wore. I'll look at him and think, <em>I ran the race for you.</em>
+            </p>
+
+            <div class="pull-quote">
+                "I ran the race for you."
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Intersection Observer for fade-in effect
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            // Observe all paragraphs and pull quotes
+            document.querySelectorAll('.body-text, .pull-quote').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Smooth scroll for header arrow click
+            document.querySelector('.scroll-indicator').addEventListener('click', function() {
+                window.scrollTo({
+                    top: window.innerHeight,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
